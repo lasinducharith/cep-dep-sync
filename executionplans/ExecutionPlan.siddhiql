@@ -1,0 +1,17 @@
+/* Enter a unique ExecutionPlan */
+@Plan:name('ExecutionPlan')
+
+/* Enter a unique description for ExecutionPlan */
+-- @Plan:description('ExecutionPlan')
+
+/* define streams/tables and write queries here ... */
+
+@Import('streaming_data:1.0.0')
+define stream streaming_data (meta_type string, id int, timeStamp int, value float, property bool, plugId int, householdId int, houseId string);
+
+@Export('processed_data:1.0.0')
+define stream processed_data (averageLoad double);
+
+from streaming_data#window.length(5)
+select ((avg(value)+ 8000)/1000)*79 as averageLoad
+insert into processed_data;

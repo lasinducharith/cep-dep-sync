@@ -1,0 +1,12 @@
+{
+  "name": "processed_data",
+  "version": "1.0.0",
+  "nickName": "",
+  "description": "",
+  "payloadData": [
+    {
+      "name": "averageLoad",
+      "type": "DOUBLE"
+    }
+  ]
+}
